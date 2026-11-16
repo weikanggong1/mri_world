@@ -26,7 +26,7 @@ torchrun --standalone --nproc_per_node=6   -m brain_mri_world_model.train   --in
 
 当前原生 `--resume` 要求相同 world size 和训练配置。由 6 卡迁到 8 卡必须先转换完整优化器状态，保留 Adam step、动量、参数组、scheduler，并重建当前轮的逻辑 batch 游标；不能复制或补零 optimizer shard，也不能静默重置。6 个 RNG 流无法构成 8 卡逐位相同恢复。
 
-本仓库尚未提供完成验证的跨 world-size 恢复转换器。直接把 6 卡 checkpoint 传给 8 卡 `--resume` 会被拒绝。八卡训练启动前必须完成这项转换及真实输入验证，不能把加载模型权重称为实验续训。
+仓库现提供[完整状态迁移与逻辑游标适配器](state_migration.md)。六卡完整状态收集已实际完成，真实创建者 wait 为 0，新增优化器更新为 0；八卡重分片与八卡训练尚未运行。原 `train.py --resume` 的同 world-size 检查保持不变，不能直接把六卡检查点传给八卡。迁移须使用显式转换和独立渲染入口，并先完成真实输入绑定。
 
 ## 依赖来源
 

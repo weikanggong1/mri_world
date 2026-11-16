@@ -32,6 +32,7 @@ flowchart LR
 
 - [数据格式、预处理与编码](docs/data_and_encoding.md)：2 mm 影像、mask/FOV、三轴 latent 和元数据的关系。
 - [训练与检查点](docs/training.md)：训练参数、完整恢复与 GPU 数变化的限制。
+- [六卡到八卡完整状态迁移](docs/state_migration.md)：优化器、scheduler、RNG 和原逻辑更新窗口；明确区分已完成收集与待运行阶段。
 - [无噪特征](docs/clean_features.md)：直接输入原始 latent，默认不添加扩散噪声。
 - [配对连续预测](docs/paired_glmnet.md)：相同受试者、相同外层划分和内部调参，比较表征与传统影像特征。
 
