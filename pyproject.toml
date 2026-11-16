@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mri-world"
+version = "0.1.0"
+description = "MRI preprocessing, frozen VAE encoding and paired representation evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2,<3", "nibabel>=5.4,<6", "torch==2.6.0", "diffusers==0.35.2", "transformers==4.56.2", "huggingface-hub>=0.36.2,<1", "safetensors>=0.6", "scipy>=1.14", "h5py>=3.11"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

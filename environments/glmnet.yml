@@ -1,0 +1,10 @@
+name: mri-world-glmnet
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=1.26.4
+  - scipy=1.11.4
+  - scikit-learn=1.7.1
+  - glmnet=2.2.1
+  - pytest>=8
